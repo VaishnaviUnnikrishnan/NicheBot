@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community</title>
+    <style>
+        /* Color Palette */
+        :root {
+            --primary-color: #4CAF50; /* Pistachio green */
+            --secondary-color: #81C784; /* Light green */
+            --background-color: #E0F2E9; /* Light pastel pistachio green */
+            --glass-color: rgba(255, 255, 255, 0.2); /* Glass effect */
+            --text-color: #333; /* Dark text */
+            --hover-color: rgba(76, 175, 80, 0.8); /* Semi-transparent green */
+        }
+
+        /* General Styles */
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #E0F2E9, #C8E6C9); /* Light pastel pistachio green gradient */
+            color: var(--text-color);
+            min-height: 100vh;
+        }
+
+        /* Glassmorphism Container */
+        .glass-container {
+            background: var(--glass-color);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 20px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .glass-container:hover {
+            transform: scale(1.02);
+        }
+
+        /* Header */
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            text-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Links */
+        .links {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-size: 1.2rem;
+            padding: 12px 20px;
+            border-radius: 10px;
+            background: var(--glass-color);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .links a:hover {
+            background: var(--hover-color);
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(76, 175, 80, 0.2);
+        }
+
+        /* Post Container */
+        .post-container {
+            background: var(--glass-color);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 20px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .post-container:hover {
+            transform: scale(1.02);
+        }
+
+        .post-container h4 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .post-container p {
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        .post-container small {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* Badge */
+        .badge {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        /* Comment Section */
+        .comment-section {
+            margin-top: 15px;
+            padding-left: 20px;
+            border-left: 2px solid var(--primary-color);
+        }
+
+        .comment-section h5 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .comment-section p {
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .comment-section small {
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        /* Evaluate Button */
+        .evaluate-button {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .evaluate-button:hover {
+            background-color: var(--hover-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(76, 175, 80, 0.2);
+        }
+
+        /* Form Styles */
+        form {
+            margin-top: 15px;
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1rem;
+            color: var(--text-color);
+        }
+
+        form input[type="text"],
+        form textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: var(--glass-color);
+            backdrop-filter: blur(5px);
+            font-size: 1rem;
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+        }
+
+        form input[type="text"]:focus,
+        form textarea:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 8px rgba(76, 175, 80, 0.2);
+        }
+
+        form button {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 10px;
+            border: none;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        form button:hover {
+            background-color: var(--hover-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(76, 175, 80, 0.2);
+        }
+
+        /* Background Animation */
+        body::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, var(--primary-color), transparent);
+            opacity: 0.2;
+            animation: rotate 20s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h2 {
+                font-size: 2rem;
+            }
+
+            .links a {
+                font-size: 1rem;
+                padding: 10px 15px;
+            }
+
+            .post-container h4 {
+                font-size: 1.2rem;
+            }
+
+            .comment-section h5 {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="glass-container">
+        <h2>Welcome to the Community, {{ username }}!</h2>
+        <div class="links">
+            <a href="/home">Home</a>
+            <a href="/profile">Profile</a>
+            <a href="/logout">Logout</a>
+        </div>
+    </div>
+
+    <div class="glass-container">
+        <h3>Create a New Post</h3>
+        <form id="createPostForm">
+            <label>Title: <input type="text" name="title" placeholder="Enter post title" required></label><br>
+            <label>Content: <textarea name="content" placeholder="Write your post here..." required></textarea></label><br>
+            <button type="submit">Post</button>
+        </form>
+    </div>
+
+    <h3>Community Posts</h3>
+    <div id="posts">
+        {% for post in posts %}
+        <div class="post-container">
+            <h4>{{ post.title }}</h4>
+            <p>{{ post.content }}</p>
+            <p><strong>By:</strong> {{ post.author }} | <small>{{ post.timestamp }}</small></p>
+
+            <!-- Display "Replied by Google Bot" badge if applicable -->
+            {% if post.has_google_reply %}
+            <span class="badge">Replied by Google Bot</span>
+            {% endif %}
+
+            <!-- Comment Form -->
+            <form class="addCommentForm" data-post-id="{{ post._id }}">
+                <label>Comment: <textarea name="comment" placeholder="Write a comment..." required></textarea></label><br>
+                <button type="submit">Add Comment</button>
+            </form>
+
+            <!-- Comments Section -->
+            <div class="comment-section">
+                <h5>Comments:</h5>
+                {% for comment in post.comments %}
+                <p><strong>{{ comment.author }}:</strong> {{ comment.comment }} <small>({{ comment.timestamp }})</small></p>
+                <!-- Evaluate Button for Google Bot Replies -->
+                {% if comment.author == "Google Bot" and post.author == username %}
+                <a href="/survey/{{ post._id }}/{{ comment._id }}" class="evaluate-button">Evaluate Response</a>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <script>
+        // Function to create a new post
+        document.getElementById("createPostForm").addEventListener("submit", async function(event) {
+            event.preventDefault();
+            let formData = new FormData(this);
+            let response = await fetch("/create_post", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    title: formData.get("title"),
+                    content: formData.get("content")
+                })
+            });
+            if (response.ok) {
+                location.reload();
+            } else {
+                alert("Error creating post.");
+            }
+        });
+
+        // Function to add a comment dynamically
+        document.querySelectorAll(".addCommentForm").forEach(form => {
+            form.addEventListener("submit", async function(event) {
+                event.preventDefault();
+                let formData = new FormData(this);
+                let postId = this.dataset.postId;
+
+                let response = await fetch("/add_comment", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        post_id: postId,
+                        comment: formData.get("comment")
+                    })
+                });
+
+                if (response.ok) {
+                    location.reload();
+                } else {
+                    alert("Error adding comment.");
+                }
+            });
+        });
+    </script>
+</body>
+</html>

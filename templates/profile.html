@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <style>
+        /* General Styles */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: linear-gradient(135deg, #E0F2E9, #C8E6C9); /* Light pastel pistachio green */
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden; /* Prevent scrolling */
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 15px; /* Reduced padding */
+            width: 90%; /* Adjusted width */
+            max-width: 350px; /* Smaller max-width */
+            text-align: center;
+            transition: transform 0.3s ease-in-out;
+            overflow-y: auto; /* Add scroll if content overflows */
+            max-height: 80vh; /* Limit height to 80% of viewport */
+        }
+
+        .container:hover {
+            transform: scale(1.02);
+        }
+
+        h2 {
+            color: #4CAF50; /* Pistachio green */
+            font-weight: 700;
+            margin-bottom: 10px; /* Reduced margin */
+            font-size: 22px; /* Smaller font size */
+        }
+
+        p {
+            font-size: 14px;
+            margin-bottom: 5px; /* Reduced spacing */
+        }
+
+        img {
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            margin-top: 10px;
+            object-fit: cover;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 8px; /* Reduced gap */
+            margin-top: 10px;
+        }
+
+        label {
+            font-weight: 500;
+            color: #4a4a4a;
+            text-align: left;
+            font-size: 13px; /* Smaller font size */
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 6px; /* Reduced padding */
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 13px;
+        }
+
+        button {
+            width: 100%;
+            padding: 8px; /* Reduced padding */
+            background-color: #4CAF50; /* Pistachio green */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 13px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #45a049; /* Slightly darker green */
+            transform: translateY(-2px);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        a {
+            display: block;
+            margin-top: 10px;
+            font-size: 13px;
+            color: #4CAF50;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 12px; /* Further reduced padding */
+                max-width: 320px; /* Even smaller max-width */
+            }
+
+            h2 {
+                font-size: 20px;
+            }
+
+            label, p, a {
+                font-size: 12px;
+            }
+
+            button {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Profile</h2>
+        <p>Username: {{ user.username }}</p>
+        <p>Role: {{ user.role }}</p>
+        <p>First Name: {{ user.first_name }}</p>
+        <p>Last Name: {{ user.last_name }}</p>
+        <p>Areas of Interest: {{ ", ".join(user.areas_of_interest) }}</p>
+        <p>Bio: {{ user.bio }}</p>
+        <p>Micro Influencer: {{ "Yes" if user.micro_influencer else "No" }}</p>
+        <p>Allow Companies: {{ "Yes" if user.allow_companies else "No" }}</p>
+        <p>Country: {{ user.country }}</p>
+        <p>Stay Informed: {{ user.stay_informed }}</p>
+        <img src="data:image/png;base64,{{ user.profile_picture }}" alt="Profile Picture">
+
+        <h3>Edit Profile</h3>
+        <form id="editProfileForm" enctype="multipart/form-data">
+            <label>Bio: <textarea name="bio">{{ user.bio }}</textarea></label>
+            <label>Areas of Interest (comma separated):
+                <input type="text" name="areas_of_interest" value="{{ ", ".join(user.areas_of_interest) }}">
+            </label>
+            <label>Profile Picture: <input type="file" name="profile_picture"></label>
+            <button type="submit">Update Profile</button>
+        </form>
+
+        <a href="/home">Back to Home</a>
+    </div>
+
+    <script>
+        // Handle Edit Profile Form Submission
+        document.getElementById("editProfileForm").addEventListener("submit", async function(event) {
+            event.preventDefault();
+            let formData = new FormData(this);
+            let response = await fetch("/edit_profile", {
+                method: "POST",
+                body: formData
+            });
+            if (response.redirected) {
+                window.location.href = response.url;
+            }
+        });
+    </script>
+</body>
+</html>

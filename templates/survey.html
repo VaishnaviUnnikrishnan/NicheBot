@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey</title>
+    <style>
+        /* Color Palette */
+        :root {
+            --primary-color: #4CAF50; /* Pistachio green */
+            --secondary-color: #81C784; /* Light green */
+            --background-color: #E0F2E9; /* Light pastel pistachio green */
+            --glass-color: rgba(255, 255, 255, 0.2); /* Glass effect */
+            --text-color: #333; /* Dark text */
+            --hover-color: rgba(76, 175, 80, 0.8); /* Semi-transparent green */
+        }
+
+        /* General Styles */
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #E0F2E9, #C8E6C9); /* Light pastel pistachio green gradient */
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Glassmorphism Container */
+        .survey-container {
+            background: var(--glass-color);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 600px;
+            width: 100%;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .survey-container:hover {
+            transform: scale(1.02);
+        }
+
+        /* Heading */
+        h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            text-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Question Styles */
+        .question {
+            margin-bottom: 20px;
+        }
+
+        .question label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: var(--text-color);
+        }
+
+        .question select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: var(--glass-color);
+            backdrop-filter: blur(5px);
+            font-size: 1rem;
+            color: var(--text-color);
+            transition: all 0.3s ease;
+        }
+
+        .question select:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 8px rgba(76, 175, 80, 0.2);
+        }
+
+        /* Submit Button */
+        button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background-color: var(--hover-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(76, 175, 80, 0.2);
+        }
+
+        /* Background Animation */
+        body::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, var(--primary-color), transparent);
+            opacity: 0.2;
+            animation: rotate 20s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            .question label {
+                font-size: 0.9rem;
+            }
+
+            .question select {
+                font-size: 0.9rem;
+            }
+
+            button {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="survey-container">
+        <h2>Survey: Evaluate Google Bot's Response</h2>
+        <form action="/submit_survey" method="post">
+            <input type="hidden" name="post_id" value="{{ post_id }}">
+            <input type="hidden" name="google_reply_id" value="{{ google_reply_id }}">
+            {% for i, question in enumerate(questions) %}
+            <div class="question">
+                <label for="q{{ i+1 }}">{{ question }}</label>
+                <select id="q{{ i+1 }}" name="q{{ i+1 }}" required>
+                    <option value="1">1 - Strongly Disagree</option>
+                    <option value="2">2 - Disagree</option>
+                    <option value="3">3 - Neutral</option>
+                    <option value="4">4 - Agree</option>
+                    <option value="5">5 - Strongly Agree</option>
+                </select>
+            </div>
+            {% endfor %}
+            <button type="submit">Submit Survey</button>
+        </form>
+    </div>
+</body>
+</html>

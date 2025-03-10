@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        /* Color Palette */
+        :root {
+            --primary-color: #4CAF50; /* Pistachio green */
+            --secondary-color: #81C784; /* Light green */
+            --background-color: #E0F2E9; /* Light pastel pistachio green */
+            --glass-color: rgba(255, 255, 255, 0.2); /* Glass effect */
+            --text-color: #333; /* Dark text */
+            --hover-color: rgba(76, 175, 80, 0.8); /* Semi-transparent green */
+        }
+
+        /* General Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #E0F2E9, #C8E6C9); /* Light pastel pistachio green gradient */
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Glassmorphism Container */
+        .glass-container {
+            background: var(--glass-color);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .glass-container:hover {
+            transform: scale(1.05);
+        }
+
+        /* Welcome Heading */
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            text-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Links */
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-size: 1.2rem;
+            padding: 12px 20px;
+            border-radius: 10px;
+            background: var(--glass-color);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .links a:hover {
+            background: var(--hover-color);
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(76, 175, 80, 0.2);
+        }
+
+        /* Background Animation */
+        body::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, var(--primary-color), transparent);
+            opacity: 0.2;
+            animation: rotate 20s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .glass-container {
+                padding: 20px;
+                max-width: 90%;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .links a {
+                font-size: 1rem;
+                padding: 10px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="glass-container">
+        <h2>Welcome, {{ username }}!</h2>
+        <div class="links">
+            <a href="/profile">View Profile</a>
+            <a href="/community">Community</a>
+            {% if username == "NicheBot" %}
+            <a href="/view_response_report">View Response Report</a>
+            {% endif %}
+            <a href="/logout">Logout</a>
+        </div>
+    </div>
+</body>
+</html>
