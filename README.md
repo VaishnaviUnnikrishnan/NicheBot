@@ -12,13 +12,21 @@ enabling seamless interaction within workspace communities. The system’s accur
 Tech Stack & Concepts
 
 •	Programming Languages: Python
+
 •	Frameworks & APIs: FastAPI, Together AI API
+
 •	Databases: MongoDB
+
 •	NLP & ML Models: LDA, Naïve Bayes, MiniLM-L6-v2
+
 •	Sentiment Analysis: Kaggle-based Twitter dataset
+
 •	Vectorization: TF-IDF, Count Vectorizer
+
 •	Web Scraping: BeautifulSoup, Scrapy
+
 •	Data Storage & Visualization: JSON, CSV, Highcharts
+
 •	Deployment & Integration: Slack Bot API
 ![image](https://github.com/user-attachments/assets/ca7934db-205c-47bb-813c-d4c6b1a3e68d)
 
