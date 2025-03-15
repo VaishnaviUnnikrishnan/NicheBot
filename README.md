@@ -1,33 +1,63 @@
-# NicheBot
-NicheBot is an AI-powered conversational assistant designed to enhance discussions in niche online communities. 
+# NicheBot - AI-Powered Conversational Assistant
 
-NicheBot is an AI-powered conversational assistant designed to enhance discussions in niche online
-communities. By leveraging Natural Language Processing (NLP) and Machine Learning (ML), NicheBot identifies relevant conversations, generates insightful responses, and fosters engagement among users.
-The system collects data from RSS feeds, Q&A platforms (Reddit, Discord, Stack Overflow), and niche blog discussions through web scraping. The extracted data is preprocessed and stored in a JSON file for further analysis.Topic modeling is implemented using Latent Dirichlet Allocation (LDA) and Naïve
-Bayes, allowing the system to categorize discussions accurately. To analyze sentiment, a Sentiment
-Analysis Model trained on Kaggle’s Twitter dataset evaluates the emotional tone behind conversations. These models are stored as .pkl files and vectorized for real-time processing.
-A FastAPI-powered backend integrates the AI models with a MongoDB database, enabling users to register, post blogs, and engage in discussions. All comments are monitored by MiniLM-L6-v2, a
-transformer-based NLP model that generates contextual responses using Together AI's API. This ensures high-quality, meaningful interactions.If a user posts about technology, NicheBot automatically engages, providing relevant responses and encouraging discussions. The chatbot is also integrated with Slack,
-enabling seamless interaction within workspace communities. The system’s accuracy and effectiveness are measured through a user feedback survey, with results stored in a CSV file. The collected metrics power a real-time impact dashboard created using Highcharts.
-Tech Stack & Concepts
+## Overview
+NicheBot is an AI-powered chatbot designed to enhance discussions in niche online communities. Utilizing **Natural Language Processing (NLP) and Machine Learning (ML)**, it identifies relevant conversations, generates insightful responses, and fosters user engagement across various platforms.
 
-•	Programming Languages: Python
+## Features
+- **Conversation Identification & Response Generation**: Extracts data from **RSS feeds, Q&A platforms (Reddit, Discord, Stack Overflow), and niche blogs** using web scraping.
+- **Topic Modeling**: Uses **Latent Dirichlet Allocation (LDA) and Naïve Bayes** to categorize discussions accurately.
+- **Sentiment Analysis**: Analyzes emotional tone in conversations using a model trained on Kaggle’s Twitter dataset.
+- **Real-Time Processing**: Stores models as **.pkl files**, vectorized using **TF-IDF & Count Vectorizer** for efficient response generation.
+- **FastAPI-Powered Backend**: Integrates AI models with **MongoDB**, allowing users to **register, post blogs, and engage in discussions**.
+- **Contextual Responses**: Uses **MiniLM-L6-v2** and **Together AI API** to generate relevant, high-quality replies.
+- **Slack Integration**: Engages users in workspace communities with real-time discussions.
+- **Impact Measurement**: Collects user feedback stored in **CSV format**, visualized in a real-time **Highcharts dashboard**.
 
-•	Frameworks & APIs: FastAPI, Together AI API
+## Tech Stack & Concepts
+- **Programming Languages**: Python
+- **Frameworks & APIs**: FastAPI, Together AI API
+- **Databases**: MongoDB
+- **NLP & ML Models**: LDA, Naïve Bayes, MiniLM-L6-v2
+- **Sentiment Analysis**: Kaggle-based Twitter dataset
+- **Vectorization**: TF-IDF, Count Vectorizer
+- **Web Scraping**: BeautifulSoup, Scrapy
+- **Data Storage & Visualization**: JSON, CSV, Highcharts
+- **Deployment & Integration**: Slack Bot API
 
-•	Databases: MongoDB
+## Installation & Setup
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/VaishnaviUnnikrishnan/NicheBot.git
+   cd NicheBot
+   ```
+2. Set up a virtual environment:
+   ```sh
+   python -m venv venv
+   source venv/bin/activate  # Mac/Linux
+   venv\Scripts\activate  # Windows
+   ```
+3. Install dependencies:
+   ```sh
+   pip install -r requirements.txt
+   ```
+4. Run the application:
+   ```sh
+   uvicorn main:app --reload
+   ```
 
-•	NLP & ML Models: LDA, Naïve Bayes, MiniLM-L6-v2
 
-•	Sentiment Analysis: Kaggle-based Twitter dataset
+## Future Enhancements
+- Expand chatbot integration to additional platforms like Telegram and Discord.
+- Improve topic modeling with transformer-based models.
+- Develop an interactive admin dashboard for conversation insights.
 
-•	Vectorization: TF-IDF, Count Vectorizer
+## License
+This project is licensed under the MIT License.
 
-•	Web Scraping: BeautifulSoup, Scrapy
+## Contact
+For inquiries, reach out to v.ukrishnan8@gmail.com.
 
-•	Data Storage & Visualization: JSON, CSV, Highcharts
 
-•	Deployment & Integration: Slack Bot API
 ![image](https://github.com/user-attachments/assets/ca7934db-205c-47bb-813c-d4c6b1a3e68d)
 
 ![image](https://github.com/user-attachments/assets/6e8ec346-7da9-4a93-bd69-55d851c39d7f)
