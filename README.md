@@ -44,7 +44,7 @@ This project aims to make community engagement more meaningful and efficient by 
 - Checks for keywords like *oracle*, *oci*, *fusion apps*, *netsuite*, etc.
 - Planned enhancement: Use an LLM classifier for better accuracy.
 
-### 3. Sentiment Analysis *(Planned)*
+### 3. Sentiment Analysis 
 - Analyze user tone (positive, negative, neutral).
 - Adapt LimeLight’s responses to be empathetic or supportive when needed.
 
