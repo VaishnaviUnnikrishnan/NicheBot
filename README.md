@@ -9,7 +9,7 @@ This project aims to make community engagement more meaningful and efficient by 
 
 ## Features
 
-### 1. Oracle RAG Assistant (LimeLight Bot)
+### 1. LimeLight 
 - Detects **Oracle-related content** using keyword filtering and semantic similarity.
 - Retrieves relevant information from a **ChromaDB vector store**.
 - Uses **LLaMA 3 (via Ollama)** to generate context-aware replies using LangChain's RAG pipeline.
