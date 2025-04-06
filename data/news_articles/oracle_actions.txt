@@ -1,0 +1,48 @@
+Oracle and Google Cloud Expand Regional Availability and Add New Capabilities to Oracle Database@Google Cloud
+
+On January 30, 2025, Oracle and Google Cloud revealed plans to enhance Oracle Database@Google Cloud by adding eight new regions over the next 12 months. These regions include U.S. Central 1 (Iowa), North America-Northeast 1 (Montreal), North America-Northeast 2 (Toronto), Asia-Northeast 1 (Tokyo), Asia-Northeast 2 (Osaka), Asia-South 1 (Mumbai), Asia-South 2 (Delhi), and South America-East 1 (São Paulo). Additionally, datacenter capacity will be doubled in regions such as London, Frankfurt, and Ashburn. New capabilities introduced include cross-region disaster recovery and database replication for Oracle Autonomous Database Serverless, as well as support for single-node Oracle Exadata Database Service on Dedicated Infrastructure. These enhancements aim to provide customers with increased flexibility, resiliency, and cost optimization for their mission-critical workloads.
+
+
+Oracle Introduces AI Agents to Transform Supply Chain Workflows
+
+Also on January 30, 2025, Oracle announced the integration of new role-based AI agents within Oracle Fusion Cloud Supply Chain & Manufacturing (SCM). These AI agents are designed to automate routine tasks, allowing supply chain professionals to focus on strategic initiatives. By delivering personalized insights, content, and recommendations tailored to specific roles, the AI agents aim to enhance productivity and efficiency in supply chain operations. This development underscores Oracle's commitment to leveraging artificial intelligence to improve business processes and outcomes.
+
+
+Oracle Enhances Global Supply Chain Efficiency with AI-Powered Capabilities
+
+In a related announcement on January 30, 2025, Oracle introduced new AI-powered logistics and order management features within Oracle Fusion Cloud Supply Chain & Manufacturing (SCM). These capabilities are designed to help organizations increase visibility, reduce costs, enhance decision-making, and improve customer satisfaction. By incorporating advanced AI technologies, Oracle aims to assist supply chain and logistics leaders in optimizing their operations and responding more effectively to dynamic market demands.
+Oceaneering Implements Oracle Fusion Cloud Applications to Propel Growth
+
+On January 30, 2025, Oceaneering International, Inc., a global provider of engineered services and products, announced its selection of Oracle Fusion Cloud Applications to manage its finance, human resources, and supply chain processes. By adopting Oracle's integrated suite of AI-powered cloud applications, Oceaneering expects to increase productivity, reduce costs, enhance the employee experience, and build more agile and resilient global operations. This move reflects Oceaneering's commitment to leveraging advanced technologies to support its growth and operational efficiency.
+
+
+Oracle Commits to Training 350,000 Individuals in AI and Emerging Technologies in the Middle East
+
+On January 21, 2025, Oracle announced its plan to train and certify 350,000 individuals across key countries in the Middle East, including the UAE, Saudi Arabia, Egypt, Qatar, Morocco, and Jordan. This initiative aims to meet the strong demand for Oracle Cloud services in the region by equipping professionals with skills in the most in-demand technologies. By investing in workforce development, Oracle seeks to support the digital transformation efforts of organizations in the Middle East and contribute to the region's growing technology ecosystem.
+
+These announcements from January 2025 highlight Oracle's ongoing efforts to expand its global infrastructure, integrate advanced AI capabilities into its offerings, and invest in workforce development to support digital transformation across various industries.
+Oracle has been recognized as a leader in the 2025 IDC MarketScape Report for Worldwide Public Cloud Infrastructure as a Service. The report evaluated multiple cloud providers and highlighted Oracle’s strengths in scalability, functionality, and innovation.
+
+Oracle and Google Cloud have announced an expansion of Oracle Database@Google Cloud to eight new regions, including locations in the U.S., Canada, Asia, and South America. The collaboration introduces new capabilities such as cross-region disaster recovery for Oracle Autonomous Database Serverless.
+
+Oracle has introduced AI agents within its Fusion Cloud Supply Chain & Manufacturing suite to enhance automation and efficiency. These AI-powered tools help streamline supply chain workflows by automating routine tasks and providing role-based recommendations.
+
+Oracle has also launched AI-powered logistics and order management features within its Fusion Cloud SCM. These features enhance global supply chain operations by improving visibility, reducing costs, and optimizing decision-making.
+
+Oracle has been named a leader in three Gartner Magic Quadrant reports related to finance, including Cloud ERP for Service-Centric Enterprises, Cloud ERP for Product-Centric Enterprises, and Financial Planning Software. These recognitions reflect Oracle’s strong execution and comprehensive vision in enterprise financial solutions.
+
+To support defense contractors, Oracle has introduced new tools in its Cloud Infrastructure that facilitate compliance with the U.S. Department of Defense’s Cloud Maturity Model Certification (CMMC), helping organizations streamline regulatory processes.
+
+In the retail sector, Oracle has unveiled a redesigned Oracle Retail Xstore Point of Service, enhancing operational efficiency and customer experience. The new system is built with improved security and performance.
+
+Oracle has partnered with Adarga to deliver generative AI-powered intelligence solutions for defense and security applications. This partnership brings Adarga’s Vantage software to Oracle Cloud Infrastructure to provide critical data insights for defense organizations.
+
+Oracle Textura has surpassed $1 trillion in construction payments processed since its launch, supporting over 120,000 projects and 200,000 subcontractors globally.
+
+Oracle has announced an initiative to train 350,000 individuals in artificial intelligence and emerging technologies across key Middle Eastern countries. This program is designed to meet the growing demand for cloud services and AI expertise in the region.
+
+Oracle has launched AI agents to assist sales professionals by automating administrative tasks and customer interactions. These AI tools can manage records, generate reports, and process data from multiple languages.
+
+Oracle, OpenAI, SoftBank, and President Trump have announced a $500 billion AI infrastructure investment plan under the joint venture Stargate. The initiative begins with a $100 billion investment in Texas, aiming to generate over 100,000 jobs and boost AI capabilities in various sectors.
+
+Oracle has also been recognized as a leader in the 2025 Gartner Magic Quadrant for Source-to-Pay Suites, emphasizing its AI-powered procurement and analytics solutions.

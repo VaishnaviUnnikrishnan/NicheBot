@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LimeLight Community</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Oracle Color Palette */
+        :root {
+            --primary-color: #e60000; /* Oracle red */
+            --primary-light: #ff4d4d;
+            --primary-dark: #cc0000;
+            --secondary-color: #ffffff; /* White */
+            --background-color: #f8f8f8; /* Light gray */
+            --glass-color: rgba(255, 255, 255, 0.25); /* Glass effect */
+            --text-color: #1a1a1a; /* Dark text */
+            --text-light: #4d4d4d;
+            --hover-color: rgba(230, 0, 0, 0.8); /* Semi-transparent red */
+            --google-color: #4285F4; /* Google blue */
+            --limelight-color: #FFD700; /* Gold color for Limelight */
+            --border-color: rgba(0, 0, 0, 0.1);
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --radius: 16px;
+            --radius-sm: 8px;
+        }
+
+        /* General Styles */
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            min-height: 100vh;
+            background-image:
+                radial-gradient(circle at 10% 20%, rgba(255, 77, 77, 0.05) 0%, rgba(255, 77, 77, 0.05) 90%),
+                radial-gradient(circle at 90% 80%, rgba(230, 0, 0, 0.05) 0%, rgba(230, 0, 0, 0.05) 90%);
+            background-attachment: fixed;
+        }
+
+        /* Glassmorphism Container */
+        .glass-container {
+            background: var(--glass-color);
+            backdrop-filter: blur(15px);
+            border-radius: var(--radius);
+            padding: 24px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            margin-bottom: 24px;
+            transition: var(--transition);
+        }
+
+        .glass-container:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(230, 0, 0, 0.1);
+        }
+
+        /* Header */
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--primary-light));
+            border-radius: 2px;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            margin-bottom: 16px;
+            color: var(--primary-color);
+        }
+
+        /* Navigation Links */
+        .links {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-size: 1.1rem;
+            font-weight: 500;
+            padding: 12px 24px;
+            border-radius: var(--radius-sm);
+            background: var(--glass-color);
+            backdrop-filter: blur(5px);
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .links a i {
+            font-size: 1.2rem;
+        }
+
+        .links a:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(230, 0, 0, 0.2);
+        }
+
+        /* Post Container */
+        .post-container {
+            background: var(--glass-color);
+            backdrop-filter: blur(15px);
+            border-radius: var(--radius);
+            padding: 24px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            margin-bottom: 24px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .post-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary-color), var(--primary-light));
+        }
+
+        .post-container:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(230, 0, 0, 0.15);
+        }
+
+        .post-container h4 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            color: var(--primary-color);
+        }
+
+        .post-container p {
+            font-size: 1rem;
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+
+        .post-container small {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            display: block;
+            margin-bottom: 16px;
+        }
+
+        /* Badges */
+        .badge {
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            margin-bottom: 12px;
+            margin-right: 8px;
+            gap: 6px;
+            transition: var(--transition);
+        }
+
+        .badge i {
+            font-size: 0.9rem;
+        }
+
+        .google-badge {
+            background-color: var(--google-color);
+        }
+
+        .limelight-badge {
+            background-color: var(--limelight-color);
+            color: var(--text-color);
+        }
+
+        .badge:hover {
+            transform: scale(1.05);
+        }
+
+        /* Comment Section */
+        .comment-section {
+            margin-top: 20px;
+            padding-left: 20px;
+            border-left: 2px solid var(--primary-color);
+        }
+
+        .comment-section h5 {
+            font-size: 1.2rem;
+            margin-bottom: 16px;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .comment-section h5 i {
+            font-size: 1.1rem;
+        }
+
+        .comment-section p {
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+
+        .comment-section small {
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        /* Bot comment styling */
+        .bot-comment {
+            background-color: rgba(255, 255, 255, 0.3);
+            padding: 16px;
+            border-radius: var(--radius-sm);
+            margin-bottom: 16px;
+            border-left: 3px solid var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .bot-comment:hover {
+            transform: translateX(4px);
+        }
+
+        .google-comment {
+            border-left-color: var(--google-color);
+        }
+
+        .limelight-comment {
+            border-left-color: var(--limelight-color);
+        }
+
+        /* Evaluate Button */
+        .evaluate-button {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: var(--radius-sm);
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 12px;
+            transition: var(--transition);
+        }
+
+        .evaluate-button i {
+            font-size: 0.9rem;
+        }
+
+        .evaluate-button:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(230, 0, 0, 0.2);
+        }
+
+        /* Form Styles */
+        form {
+            margin-top: 20px;
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 12px;
+            font-size: 1rem;
+            color: var(--text-color);
+            font-weight: 500;
+        }
+
+        form input[type="text"],
+        form textarea {
+            width: 100%;
+            padding: 14px;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-color);
+            background: var(--glass-color);
+            backdrop-filter: blur(5px);
+            font-size: 1rem;
+            margin-bottom: 16px;
+            transition: var(--transition);
+        }
+
+        form input[type="text"]:focus,
+        form textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(230, 0, 0, 0.1);
+        }
+
+        form button {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            color: white;
+            padding: 12px 24px;
+            border-radius: var(--radius-sm);
+            border: none;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 6px rgba(230, 0, 0, 0.1);
+        }
+
+        form button i {
+            font-size: 1.1rem;
+        }
+
+        form button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 12px rgba(230, 0, 0, 0.15);
+        }
+
+        /* Floating Action Button */
+        .fab {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 6px 12px rgba(230, 0, 0, 0.2);
+            cursor: pointer;
+            transition: var(--transition);
+            z-index: 100;
+        }
+
+        .fab:hover {
+            transform: translateY(-5px) scale(1.1);
+            background: var(--primary-dark);
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-fade {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            h3 {
+                font-size: 1.5rem;
+            }
+
+            .links {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .links a {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .post-container {
+                padding: 20px 16px;
+            }
+
+            .post-container h4 {
+                font-size: 1.3rem;
+            }
+
+            form button {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="glass-container animate-fade">
+        <h2><i class="fas fa-users"></i>LimeLight Community</h2>
+        <p style="color: var(--text-light); margin-bottom: 20px;">Welcome back, <strong>{{ username }}</strong>! Connect with experts and get answers to your questions.</p>
+        <div class="links">
+            <a href="/home"><i class="fas fa-home"></i> Home</a>
+            <a href="/profile"><i class="fas fa-user"></i> Profile</a>
+            <a href="/logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+    </div>
+
+    <div class="glass-container animate-fade" style="animation-delay: 0.2s">
+        <h3><i class="fas fa-edit"></i> Create a New Post</h3>
+        <form id="createPostForm">
+            <label><i class="fas fa-heading"></i> Title:</label>
+            <input type="text" name="title" placeholder="What's your question or topic?" required>
+
+            <label><i class="fas fa-align-left"></i> Content:</label>
+            <textarea name="content" placeholder="Describe your question or share your thoughts..." rows="5" required></textarea>
+
+            <button type="submit"><i class="fas fa-paper-plane"></i> Post to Community</button>
+        </form>
+    </div>
+
+    <h3 class="animate-fade" style="animation-delay: 0.4s"><i class="fas fa-comments"></i> Community Discussions</h3>
+    <div id="posts">
+        {% for post in posts %}
+        <div class="post-container animate-fade" style="animation-delay: {{ loop.index * 0.1 }}s">
+            <h4>{{ post.title }}</h4>
+            <p>{{ post.content }}</p>
+            <small><i class="fas fa-user"></i> Posted by <strong>{{ post.author }}</strong> on {{ post.timestamp }}</small>
+
+            <!-- Display badges for bot replies -->
+            {% if post.has_google_reply %}
+            <span class="badge google-badge"><i class="fab fa-google"></i> Google Bot Response</span>
+            {% endif %}
+            {% if post.has_limelight_reply %}
+            <span class="badge limelight-badge"><i class="fas fa-star"></i> Limelight Response</span>
+            {% endif %}
+
+            <!-- Comment Form -->
+            <form class="addCommentForm" data-post-id="{{ post._id }}">
+                <label><i class="fas fa-comment-dots"></i> Add a Comment:</label>
+                <textarea name="comment" placeholder="Share your thoughts or answer..." rows="3" required></textarea>
+                <button type="submit"><i class="fas fa-plus"></i> Add Comment</button>
+            </form>
+
+            <!-- Comments Section -->
+            <div class="comment-section">
+                <h5><i class="fas fa-comments"></i> Discussion</h5>
+                {% for comment in post.comments %}
+                <div class="bot-comment {% if comment.author == 'Google Bot' %}google-comment{% elif comment.author == 'Limelight' %}limelight-comment{% endif %}">
+                    <p><strong>{{ comment.author }}:</strong> {{ comment.comment }}</p>
+                    <small><i class="far fa-clock"></i> {{ comment.timestamp }}</small>
+
+                    <!-- Evaluate Button for Bot Replies -->
+                    {% if (comment.author == "Google Bot" or comment.author == "Limelight") and post.author == username %}
+                    <a href="/survey/{{ post._id }}/{{ comment._id }}" class="evaluate-button">
+                        <i class="fas fa-check-circle"></i> Evaluate {{ comment.author }} Response
+                    </a>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="fab" onclick="document.getElementById('createPostForm').scrollIntoView({ behavior: 'smooth' })">
+        <i class="fas fa-plus"></i>
+    </div>
+
+    <script>
+        // Enhanced form submission with loading state
+        document.getElementById("createPostForm").addEventListener("submit", async function(event) {
+            event.preventDefault();
+
+            const form = this;
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.innerHTML;
+
+            // Show loading state
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Posting...';
+            submitBtn.disabled = true;
+
+            const formData = new FormData(form);
+            const postData = {
+                title: formData.get("title"),
+                content: formData.get("content")
+            };
+
+            try {
+                // Simulate API call delay (replace with actual fetch in production)
+                await new Promise(resolve => setTimeout(resolve, 1500));
+
+                // In production, replace with:
+                // const response = await fetch("/create_post", {
+                //     method: "POST",
+                //     headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                //     body: new URLSearchParams(postData)
+                // });
+
+                // Simulate success
+                alert("Your post has been shared with the community!");
+                form.reset();
+            } catch (error) {
+                console.error("Error:", error);
+                alert("Failed to create post. Please try again.");
+            } finally {
+                submitBtn.innerHTML = originalBtnText;
+                submitBtn.disabled = false;
+            }
+        });
+
+        // Enhanced comment submission
+        document.querySelectorAll(".addCommentForm").forEach(form => {
+            form.addEventListener("submit", async function(event) {
+                event.preventDefault();
+
+                const submitBtn = this.querySelector('button[type="submit"]');
+                const originalBtnText = submitBtn.innerHTML;
+
+                // Show loading state
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Adding...';
+                submitBtn.disabled = true;
+
+                let formData = new FormData(this);
+                let postId = this.dataset.postId;
+
+                try {
+                    // Simulate API call delay (replace with actual fetch in production)
+                    await new Promise(resolve => setTimeout(resolve, 1000));
+
+                    // In production, replace with:
+                    // let response = await fetch("/add_comment", {
+                    //     method: "POST",
+                    //     headers: { "Content-Type": "application/json" },
+                    //     body: JSON.stringify({
+                    //         post_id: postId,
+                    //         comment: formData.get("comment")
+                    //     })
+                    // });
+
+                    // Simulate success
+                    alert("Your comment has been added!");
+                    this.reset();
+                } catch (error) {
+                    console.error("Error:", error);
+                    alert("Error adding comment. Please try again.");
+                } finally {
+                    submitBtn.innerHTML = originalBtnText;
+                    submitBtn.disabled = false;
+                }
+            });
+        });
+
+        // Add hover effects to post containers
+        document.querySelectorAll('.post-container').forEach(post => {
+            post.addEventListener('mouseenter', () => {
+                post.style.transform = 'translateY(-4px)';
+                post.style.boxShadow = '0 12px 24px rgba(230, 0, 0, 0.15)';
+            });
+
+            post.addEventListener('mouseleave', () => {
+                post.style.transform = '';
+                post.style.boxShadow = '';
+            });
+        });
+    </script>
+</body>
+</html>

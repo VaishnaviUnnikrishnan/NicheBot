@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Oracle Community Portal</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+    :root {
+      --primary-color: #e60000;
+      --primary-light: #ff3333;
+      --primary-dark: #b30000;
+      --secondary-color: #ffffff;
+      --text-color: #1a1a1a;
+      --text-light: #4d4d4d;
+      --border-color: rgba(0, 0, 0, 0.1);
+      --hover-bg: #cc0000;
+      --bg-gradient: linear-gradient(135deg, #f8f8f8 0%, #f0f0f0 100%);
+      --card-shadow: 0 12px 24px -6px rgba(0, 0, 0, 0.1), 0 8px 16px -8px rgba(0, 0, 0, 0.1);
+      --transition-all: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    body {
+      background: var(--bg-gradient);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at 70% 30%, rgba(230, 0, 0, 0.03) 0%, transparent 50%);
+      z-index: -1;
+    }
+
+    .container {
+      background-color: var(--secondary-color);
+      border-radius: 16px;
+      padding: 40px;
+      width: 100%;
+      max-width: 420px;
+      box-shadow: var(--card-shadow);
+      position: relative;
+      overflow: hidden;
+      transition: var(--transition-all);
+    }
+
+    .container::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary-color) 0%, var(--primary-light) 100%);
+    }
+
+    h2 {
+      color: var(--primary-color);
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 24px;
+      position: relative;
+      display: inline-block;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 40px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary-color) 0%, var(--primary-light) 100%);
+      border-radius: 3px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .form-group {
+      position: relative;
+    }
+
+    label {
+      display: block;
+      font-size: 14px;
+      color: var(--text-light);
+      margin-bottom: 6px;
+      font-weight: 500;
+      transition: var(--transition-all);
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="file"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 12px 16px;
+      font-size: 14px;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      background-color: rgba(245, 245, 245, 0.5);
+      transition: var(--transition-all);
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(230, 0, 0, 0.1);
+      background-color: white;
+    }
+
+    button {
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 14px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition-all);
+      box-shadow: 0 4px 6px rgba(230, 0, 0, 0.1);
+      margin-top: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    button:hover {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-color) 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(230, 0, 0, 0.15);
+    }
+
+    button:active {
+      transform: translateY(0);
+    }
+
+    .or-divider {
+      text-align: center;
+      color: var(--text-light);
+      margin: 24px 0;
+      font-size: 13px;
+      font-weight: 500;
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .or-divider::before,
+    .or-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, var(--border-color) 50%, transparent 100%);
+    }
+
+    .or-divider span {
+      padding: 0 12px;
+    }
+
+    #message {
+      margin-top: 16px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--primary-color);
+      text-align: center;
+      padding: 10px;
+      border-radius: 8px;
+      background-color: rgba(230, 0, 0, 0.05);
+      border: 1px solid rgba(230, 0, 0, 0.1);
+    }
+
+    .form-toggle {
+      text-align: center;
+      margin-top: 24px;
+      font-size: 14px;
+      color: var(--text-light);
+    }
+
+    .form-toggle a {
+      color: var(--primary-color);
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition-all);
+    }
+
+    .form-toggle a:hover {
+      color: var(--primary-dark);
+      text-decoration: underline;
+    }
+
+    /* Floating label effect */
+    .float-label {
+      position: relative;
+    }
+
+    .float-label label {
+      position: absolute;
+      top: 12px;
+      left: 16px;
+      pointer-events: none;
+      transition: var(--transition-all);
+      background: white;
+      padding: 0 4px;
+    }
+
+    .float-label input:focus + label,
+    .float-label input:not(:placeholder-shown) + label,
+    .float-label select:focus + label,
+    .float-label textarea:focus + label {
+      top: -8px;
+      font-size: 12px;
+      color: var(--primary-color);
+    }
+
+    /* Animated form switching */
+    .form-container {
+      position: relative;
+      overflow: hidden;
+      min-height: 400px;
+    }
+
+    .form-section {
+      position: absolute;
+      width: 100%;
+      transition: transform 0.4s ease, opacity 0.4s ease;
+    }
+
+    .form-section.hidden {
+      transform: translateX(-100%);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .form-section.visible {
+      transform: translateX(0);
+      opacity: 1;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 480px) {
+      .container {
+        padding: 30px 20px;
+      }
+
+      h2 {
+        font-size: 20px;
+      }
+
+      button {
+        padding: 12px;
+      }
+    }
+
+    /* Micro-interactions */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .form-group {
+      animation: fadeIn 0.4s ease forwards;
+      opacity: 0;
+    }
+
+    .form-group:nth-child(1) { animation-delay: 0.1s; }
+    .form-group:nth-child(2) { animation-delay: 0.2s; }
+    .form-group:nth-child(3) { animation-delay: 0.3s; }
+    .form-group:nth-child(4) { animation-delay: 0.4s; }
+    .form-group:nth-child(5) { animation-delay: 0.5s; }
+    .form-group:nth-child(6) { animation-delay: 0.6s; }
+    .form-group:nth-child(7) { animation-delay: 0.7s; }
+    .form-group:nth-child(8) { animation-delay: 0.8s; }
+    .form-group:nth-child(9) { animation-delay: 0.9s; }
+    .form-group:nth-child(10) { animation-delay: 1.0s; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="form-container">
+      <!-- Login Form -->
+      <div class="form-section visible" id="loginSection">
+        <h2>Welcome Back</h2>
+        <form id="loginForm">
+          <div class="form-group float-label">
+            <input type="text" name="username" id="loginUsername" placeholder=" " required />
+            <label for="loginUsername">Username</label>
+          </div>
+
+          <div class="form-group float-label">
+            <input type="password" name="password" id="loginPassword" placeholder=" " required />
+            <label for="loginPassword">Password</label>
+          </div>
+
+          <button type="submit">Login</button>
+        </form>
+
+        <div class="or-divider">
+          <span>OR</span>
+        </div>
+
+        <div class="form-toggle">
+          New to LimeLight Community? <a href="#" id="showSignup">Create an account</a>
+        </div>
+      </div>
+
+      <!-- Signup Form -->
+      <div class="form-section hidden" id="signupSection">
+        <h2>Join Our Community</h2>
+        <form id="signupForm" enctype="multipart/form-data">
+          <div class="form-group float-label">
+            <input type="text" name="username" id="signupUsername" placeholder=" " required />
+            <label for="signupUsername">Username</label>
+          </div>
+
+          <div class="form-group float-label">
+            <input type="text" name="role" id="role" placeholder=" " required />
+            <label for="role">Role</label>
+          </div>
+
+          <div class="form-group float-label">
+            <input type="text" name="first_name" id="firstName" placeholder=" " required />
+            <label for="firstName">First Name</label>
+          </div>
+
+          <div class="form-group float-label">
+            <input type="text" name="last_name" id="lastName" placeholder=" " required />
+            <label for="lastName">Last Name</label>
+          </div>
+
+          <div class="form-group float-label">
+            <input type="text" name="areas_of_interest" id="interests" placeholder=" " required />
+            <label for="interests">Areas of Interest</label>
+          </div>
+
+          <div class="form-group float-label">
+            <textarea name="bio" id="bio" placeholder=" "></textarea>
+            <label for="bio">Bio</label>
+          </div>
+
+          <div class="form-group">
+            <label>Micro Influencer</label>
+            <select name="micro_influencer">
+              <option value="true">Yes</option>
+              <option value="false">No</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Allow Companies to Contact</label>
+            <select name="allow_companies">
+              <option value="true">Yes</option>
+              <option value="false">No</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Country</label>
+            <select name="country" id="countryDropdown"></select>
+          </div>
+
+          <div class="form-group">
+            <label>Stay Informed</label>
+            <select name="stay_informed">
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Profile Picture</label>
+            <input type="file" name="profile_picture" />
+          </div>
+
+          <div class="form-group float-label">
+            <input type="password" name="password" id="signupPassword" placeholder=" " required />
+            <label for="signupPassword">Password</label>
+          </div>
+
+          <button type="submit">Create Account</button>
+        </form>
+
+        <div class="or-divider">
+          <span>OR</span>
+        </div>
+
+        <div class="form-toggle">
+          Already have an account? <a href="#" id="showLogin">Sign in</a>
+        </div>
+      </div>
+    </div>
+
+    <p id="message"></p>
+  </div>
+
+  <script>
+    // Fetch Countries
+    async function loadCountries() {
+      try {
+        let response = await fetch("/countries");
+        let data = await response.json();
+        let dropdown = document.getElementById("countryDropdown");
+
+        // Add a default option
+        let defaultOption = document.createElement("option");
+        defaultOption.value = "";
+        defaultOption.textContent = "Select your country";
+        defaultOption.selected = true;
+        defaultOption.disabled = true;
+        dropdown.appendChild(defaultOption);
+
+        // Add countries
+        data.countries.forEach((country) => {
+          let option = document.createElement("option");
+          option.value = country;
+          option.textContent = country;
+          dropdown.appendChild(option);
+        });
+      } catch (error) {
+        console.error("Error loading countries:", error);
+      }
+    }
+
+    // Form toggle functionality
+    document.getElementById("showSignup").addEventListener("click", function(e) {
+      e.preventDefault();
+      document.getElementById("loginSection").classList.remove("visible");
+      document.getElementById("loginSection").classList.add("hidden");
+      document.getElementById("signupSection").classList.remove("hidden");
+      document.getElementById("signupSection").classList.add("visible");
+      loadCountries(); // Load countries when signup form is shown
+    });
+
+    document.getElementById("showLogin").addEventListener("click", function(e) {
+      e.preventDefault();
+      document.getElementById("signupSection").classList.remove("visible");
+      document.getElementById("signupSection").classList.add("hidden");
+      document.getElementById("loginSection").classList.remove("hidden");
+      document.getElementById("loginSection").classList.add("visible");
+    });
+
+    // Handle Login
+    document.getElementById("loginForm").addEventListener("submit", async function (event) {
+      event.preventDefault();
+      let formData = new FormData(this);
+      let response = await fetch("/login", {
+        method: "POST",
+        body: new URLSearchParams(formData),
+      });
+      if (response.redirected) {
+        window.location.href = response.url;
+      } else {
+        let result = await response.json();
+        document.getElementById("message").textContent = result.message || "Login failed";
+      }
+    });
+
+    // Handle Signup
+    document.getElementById("signupForm").addEventListener("submit", async function (event) {
+      event.preventDefault();
+      let submitBtn = this.querySelector('button[type="submit"]');
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Creating Account...";
+
+      try {
+        let formData = new FormData(this);
+        let response = await fetch("/signup", {
+          method: "POST",
+          body: formData,
+        });
+        let result = await response.json();
+
+        document.getElementById("message").textContent = result.message;
+
+        if (response.ok) {
+          // Switch to login form on successful signup
+          document.getElementById("signupSection").classList.remove("visible");
+          document.getElementById("signupSection").classList.add("hidden");
+          document.getElementById("loginSection").classList.remove("hidden");
+          document.getElementById("loginSection").classList.add("visible");
+        }
+      } catch (error) {
+        document.getElementById("message").textContent = "An error occurred. Please try again.";
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Create Account";
+      }
+    });
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', function() {
+      // Add animation delays for form groups
+      const formGroups = document.querySelectorAll('.form-group');
+      formGroups.forEach((group, index) => {
+        group.style.animationDelay = `${index * 0.1}s`;
+      });
+    });
+  </script>
+</body>
+</html>

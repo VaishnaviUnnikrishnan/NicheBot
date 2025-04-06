@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oracle Home</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #F80000; /* Oracle Red */
+            --secondary-color: #1D1D1D; /* Dark Gray */
+            --background-color: #F8F8F8; /* Light Gray Background */
+            --text-color: #2D2D2D;
+            --card-bg: #FFFFFF;
+            --hover-color: #c60000;
+            --border-color: #E0E0E0;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background: var(--background-color);
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 40px;
+            max-width: 420px;
+            width: 100%;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 2.4rem;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .links a {
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+            padding: 12px 18px;
+            border-radius: 8px;
+            background-color: #fff;
+            transition: all 0.25s ease;
+        }
+
+        .links a:hover {
+            background-color: var(--primary-color);
+            color: #fff;
+            border-color: var(--primary-color);
+            box-shadow: 0 4px 12px rgba(248, 0, 0, 0.2);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 24px;
+                margin: 0 16px;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .links a {
+                font-size: 1rem;
+                padding: 10px 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Welcome, {{ username }}!</h2>
+        <div class="links">
+            <a href="/profile">View Profile</a>
+            <a href="/community">Community</a>
+            {% if username == "NicheBot" %}
+            <a href="/view_response_report">View Response Report</a>
+            {% endif %}
+            <a href="/logout">Logout</a>
+        </div>
+    </div>
+</body>
+</html>
